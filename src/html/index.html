@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World!</title>
+    <title>Chat app</title>
   </head>
   <body>
-    <h1>Hello world!</h1>
+    <header>Chat</header>
+    <div class="chat-window">
+      <div class="chat-window__messages">
+      <div class="chat-window__message chat-window__message--incoming">hi</div>
+      <div class="chat-window__message chat-window__message--outgoing">hello</div>
+      <div class="chat-window__message chat-window__message--outgoing">hows it going?</div>
+      <div class="chat-window__message chat-window__message--incoming">not bad</div>
+      </div>
+      <form class="chat-window__sender-features">
+        <label for="message-area" class="visually-hidden">Message area</label>
+        <textarea
+          name="message-area"
+          id="message-area"
+          class="chat-window__input"></textarea>
+        <button class="chat-window__send-button" type="submit">Send</button>
+      </form>
+    </div>
   </body>
 </html>

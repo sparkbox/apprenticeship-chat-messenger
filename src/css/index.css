@@ -1,3 +1,83 @@
-html {
-  background-color: #e2e2e2;
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+
+header {
+  text-align: center;
+  background: aliceblue;
+  border: 1px solid black;
+  width: 100%;
+  padding: 1rem;
+}
+
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  margin: 0 auto;
+  max-width: 55rem;
+  width: 90%;
+  background-color: #DDD;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  border: 1px solid black;
+}
+
+.chat-window__message {
+  padding: 0.5rem;
+  border: 1px solid black;
+  margin: 0.25rem 0;
+  min-width: 2rem;
+  clear: both;
+  border-radius: 1rem;
+}
+
+.chat-window__message--incoming {
+  float: left;
+  background-color: deeppink;
+}
+
+.chat-window__message--outgoing {
+  float: right;
+  background-color: dodgerblue;
+}
+
+.chat-window__input {
+  width: 80%;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  padding-left: 0.5rem;
+  resize: none;
+}
+
+.chat-window__sender-features {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-window__messages {
+  height: 85%;
+}
+
+.chat-window__send-button {
+  width: 6rem;
+  height: 3rem;
+  border-radius: 1rem;
+  margin-top: 0.9rem;
+}
+
+.visually-hidden {
+  position: fixed;
+  bottom: 100%;
+  right: 100%;
 }
