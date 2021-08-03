@@ -1,0 +1,19 @@
+{
+  "name": "apprenticeship-chat-messenger",
+  "version": "1.0.0",
+  "description": "A simple chat application using WebSockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sparkbox/apprenticeship-chat-messenger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sparkbox/apprenticeship-chat-messenger/issues"
+  },
+  "homepage": "https://github.com/sparkbox/apprenticeship-chat-messenger#readme"
+}
