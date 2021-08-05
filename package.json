@@ -4,7 +4,9 @@
   "description": "A simple chat application using WebSockets",
   "main": "index.js",
   "scripts": {
+    "postinstall": "cd ./server && npm i",
     "dev": "webpack serve --mode development",
+    "dev:server": "cd ./server && npm start",
     "test": "jest",
     "test:coverage": "npm run test -- --coverage",
     "lint": "eslint ./ --ignore-path .gitignore"
