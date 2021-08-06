@@ -8,7 +8,7 @@ The Apprentice Chat App allows users to send a message to other users. Each mess
 
 ### Step 1
 
-Install node.js 
+Install node.js
 
 ### Step 2
 
@@ -22,7 +22,7 @@ git clone https://github.com/sparkbox/apprenticeship-chat-messenger.git
 Install all dependencies by running:
 
 ```
-npm i 
+npm i
 ```
 
 ## Commands
@@ -40,7 +40,7 @@ npm run test
 Runs test suites
 
 ```
-npm run test:coverage 
+npm run test:coverage
 ```
 
 Runs test suites with coverage information reported in the output
@@ -49,4 +49,10 @@ Runs test suites with coverage information reported in the output
 npm run lint
 ```
 
-Runs ESLint 
+Runs ESLint
+
+```sh
+  npm run dev:server
+```
+
+Runs the WebSocket server
