@@ -1,5 +1,7 @@
 export const addMessageToChatHistory = (m) => {
-  const c = document.createElement('div', []);
+  if (typeof m !== 'string' || m === '') return;
+
+  const c = document.createElement('div');
   c.classList.add('chat-window__message', 'chat-window__message--outgoing');
   c.textContent = m;
 
