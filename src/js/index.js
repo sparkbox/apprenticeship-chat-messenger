@@ -1,10 +1,3 @@
-import '../css/index.css';
-import { addMessageToChatHistory } from './chatWindow';
-import { callbackWhenEnterIsPressed, callbackOnFormSubmit } from './eventHandlers';
+import main from './app';
 
-const helloWorld = () => console.log('Hello!');
-
-callbackWhenEnterIsPressed(addMessageToChatHistory);
-callbackOnFormSubmit(addMessageToChatHistory);
-
-helloWorld();
+main();
