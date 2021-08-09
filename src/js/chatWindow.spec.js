@@ -45,3 +45,30 @@ test('adds valid messages to the chat window', () => {
   expect(document.getElementsByClassName('chat-window__messages')[0].lastChild)
     .toStrictEqual(expectedNode);
 });
+
+describe('testing options parameter functionality in addMessageToChatHistory', () => {
+  it('throws an error if messageType is not "incoming" or "outgoing"', () => {
+    expect(() => { addMessageToChatHistory('testing', { messageType: 'unknown' }); }).toThrowError('Message Type is incorrect');
+  });
+
+  it('appends incoming message class when messageType matches', () => {
+    addMessageToChatHistory('testing', { messageType: 'incoming' });
+
+    const expectedNode = document.createElement('div');
+    expectedNode.classList.add('chat-window__message', 'chat-window__message--incoming');
+    expectedNode.textContent = 'testing';
+
+    expect(document.getElementsByClassName('chat-window__messages')[0].lastChild)
+      .toStrictEqual(expectedNode);
+  });
+  it('appends outgoing message class by default', () => {
+    addMessageToChatHistory('testing');
+
+    const expectedNode = document.createElement('div');
+    expectedNode.classList.add('chat-window__message', 'chat-window__message--outgoing');
+    expectedNode.textContent = 'testing';
+
+    expect(document.getElementsByClassName('chat-window__messages')[0].lastChild)
+      .toStrictEqual(expectedNode);
+  });
+});
