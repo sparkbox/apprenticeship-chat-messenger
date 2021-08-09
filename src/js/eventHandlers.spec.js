@@ -21,7 +21,7 @@ describe('eventHandler.js', () => {
     callbackWhenEnterIsPressed(callback);
 
     const textArea = document.querySelector('.chat-window__input');
-    const event = new KeyboardEvent('keypress', { keyCode: 13 });
+    const event = new KeyboardEvent('keypress', { key: 'Enter' });
 
     textArea.dispatchEvent(event);
 

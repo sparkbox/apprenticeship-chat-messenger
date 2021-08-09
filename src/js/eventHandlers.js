@@ -1,8 +1,7 @@
 export const callbackWhenEnterIsPressed = (callback) => {
   const textArea = document.querySelector('.chat-window__input');
   textArea.addEventListener('keypress', (e) => {
-    // if key is 'Enter' key console message
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
       e.preventDefault();
       callback(textArea.value);
       textArea.value = '';
