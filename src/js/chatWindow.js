@@ -1,5 +1,10 @@
 import { isMessageValid } from './messageValidation';
 
+/**
+ * Adds a message, if valid, to the chat messages in the DOM.
+ * @param {*} m a message (yet to be validated)
+ * @returns {void}
+ */
 export const addMessageToChatHistory = (m) => {
   if (!isMessageValid(m)) return;
 
