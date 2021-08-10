@@ -1,16 +1,28 @@
 import { isMessageValid } from './messageValidation';
 
+const guardOptions = (options) => {
+  if (options.messageType !== 'outgoing' && options.messageType !== 'incoming') {
+    return false;
+  }
+
+  return true;
+};
+
 /**
  * Adds a message, if valid, to the chat messages in the DOM.
- * @param {*} m a message (yet to be validated)
+ * @param {*} message a message (yet to be validated)
  * @returns {void}
  */
-export const addMessageToChatHistory = (m) => {
-  if (!isMessageValid(m)) return;
+export const addMessageToChatHistory = (message, options = { messageType: 'outgoing' }) => {
+  if (!isMessageValid(message)) return;
 
-  const c = document.createElement('div');
-  c.classList.add('chat-window__message', 'chat-window__message--outgoing');
-  c.textContent = m;
+  if (!guardOptions(options)) throw new Error('Message Type is incorrect');
 
-  document.querySelector('.js-add-message-to-chat-history').appendChild(c);
+  const chatMessageElement = document.createElement('div');
+
+  chatMessageElement.classList.add('chat-window__message', `chat-window__message--${options.messageType}`);
+
+  chatMessageElement.textContent = message;
+
+  document.querySelector('.js-add-message-to-chat-history').appendChild(chatMessageElement);
 };
