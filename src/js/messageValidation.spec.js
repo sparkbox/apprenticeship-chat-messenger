@@ -12,7 +12,7 @@ test('should guard against null and undefined messages', () => {
 test('should guard against whilespace-filled messages', () => {
   expect(isMessageValid('                         \n          ')).toBe(false);
   expect(isMessageValid('      ')).toBe(false);
-  expect(isMessageValid('         ')).toBe(false);
+  expect(isMessageValid('      \t   ')).toBe(false);
   expect(isMessageValid('\n\n\n\n\n\n\n\n\n\n\n')).toBe(false);
 });
 
