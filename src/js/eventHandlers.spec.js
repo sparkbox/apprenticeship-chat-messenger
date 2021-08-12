@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { callbackOnFormSubmit, callbackWhenEnterIsPressed } from './eventHandlers';
+import { onFormSubmit, onEnterPress } from './eventHandlers';
 
 document.body.innerHTML = `
 <form class="chat-window__sender-features">
@@ -15,31 +15,53 @@ document.body.innerHTML = `
 </form>
 `;
 
-describe('eventHandler.js', () => {
-  it('Should run callback and set textarea to empty string on "Enter" key press', () => {
-    const callback = jest.fn();
-    callbackWhenEnterIsPressed(callback);
+const textArea = document.querySelector('.chat-window__input');
+const chatForm = document.querySelector('.chat-window__sender-features');
 
-    const textArea = document.querySelector('.chat-window__input');
+describe('callbackWhenEnterIsPressed', () => {
+  it('Should run callback on "Enter" key press', () => {
+    const callback = jest.fn();
+    onEnterPress(callback);
+
+    const event = new KeyboardEvent('keypress', { key: 'Enter' });
+
+    textArea.dispatchEvent(event);
+
+    expect(callback).toHaveBeenCalled();
+  });
+
+  it('Should set textarea to empty string on "Enter" key press', () => {
+    const callback = jest.fn();
+    onEnterPress(callback);
+
     const event = new KeyboardEvent('keypress', { key: 'Enter' });
 
     textArea.dispatchEvent(event);
 
     expect(textArea.value).toBe('');
+  });
+});
+
+describe('callbackOnFormSubmit', () => {
+  it('Should run callback and set textarea to empty string on submit event', () => {
+    const callback = jest.fn();
+    onFormSubmit(callback);
+
+    const event = new Event('submit');
+
+    chatForm.dispatchEvent(event);
+
     expect(callback).toHaveBeenCalled();
   });
 
-  it('Should run callback and set textarea to empty string on submit event', () => {
+  it('Should set textarea to empty string on form submit', () => {
     const callback = jest.fn();
-    callbackOnFormSubmit(callback);
+    onFormSubmit(callback);
 
-    const textArea = document.querySelector('.chat-window__input');
-    const chatForm = document.querySelector('.chat-window__sender-features');
     const event = new Event('submit');
 
     chatForm.dispatchEvent(event);
 
     expect(textArea.value).toBe('');
-    expect(callback).toHaveBeenCalled();
   });
 });
