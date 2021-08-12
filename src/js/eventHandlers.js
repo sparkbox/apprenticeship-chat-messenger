@@ -1,4 +1,4 @@
-export const callbackWhenEnterIsPressed = (callback) => {
+export const onEnterPress = (callback) => {
   const textArea = document.querySelector('.chat-window__input');
   textArea.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
@@ -9,9 +9,9 @@ export const callbackWhenEnterIsPressed = (callback) => {
   });
 };
 
-export const callbackOnFormSubmit = (callback) => {
-  const chatForm = document.querySelector('.chat-window__sender-features');
+export const onFormSubmit = (callback) => {
   const textArea = document.querySelector('.chat-window__input');
+  const chatForm = document.querySelector('.chat-window__sender-features');
   chatForm.addEventListener('submit', (e) => {
     e.preventDefault();
     callback(textArea.value);

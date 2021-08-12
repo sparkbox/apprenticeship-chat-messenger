@@ -18,8 +18,8 @@ document.body.innerHTML = `
 const textArea = document.querySelector('.chat-window__input');
 const chatForm = document.querySelector('.chat-window__sender-features');
 
-describe('callbackWhenEnterIsPressed', () => {
-  it('Should run callback on "Enter" key press', () => {
+describe('onEnterIsPressed', () => {
+  it('Runs callback on "Enter" key press', () => {
     const callback = jest.fn();
     onEnterPress(callback);
 
@@ -30,7 +30,7 @@ describe('callbackWhenEnterIsPressed', () => {
     expect(callback).toHaveBeenCalled();
   });
 
-  it('Should set textarea to empty string on "Enter" key press', () => {
+  it('Sets textarea to empty string on "Enter" key press', () => {
     const callback = jest.fn();
     onEnterPress(callback);
 
@@ -42,8 +42,8 @@ describe('callbackWhenEnterIsPressed', () => {
   });
 });
 
-describe('callbackOnFormSubmit', () => {
-  it('Should run callback and set textarea to empty string on submit event', () => {
+describe('onFormSubmit', () => {
+  it('Runs callback on submit event', () => {
     const callback = jest.fn();
     onFormSubmit(callback);
 
@@ -54,7 +54,7 @@ describe('callbackOnFormSubmit', () => {
     expect(callback).toHaveBeenCalled();
   });
 
-  it('Should set textarea to empty string on form submit', () => {
+  it('Sets textarea to empty string on form submit', () => {
     const callback = jest.fn();
     onFormSubmit(callback);
 
