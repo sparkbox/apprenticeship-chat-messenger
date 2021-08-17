@@ -14,11 +14,23 @@ describe('chatService.js', () => {
   });
   it('Resolves with instance', () => {
     const mockWebSocket = {
-      send: () => {},
+      onopen: () => {},
+      onerror: () => {},
     };
 
-    expect(setCustomWebSocketInstance(mockWebSocket)).resolves.toEqual(mockWebSocket);
+    const customWebsocketInstance = setCustomWebSocketInstance(mockWebSocket);
+    mockWebSocket.onopen();
+
+    expect(customWebsocketInstance).resolves.toMatchObject(mockWebSocket);
   });
-  it('Rejects with error message', async () => {
+  it('Rejects with error message', () => {
+    const mockWebSocket = {
+      onopen: () => {},
+      onerror: () => {},
+    };
+
+    const customWebsocketInstance = setCustomWebSocketInstance(mockWebSocket);
+    mockWebSocket.onerror(new Error('Error!'));
+    expect(customWebsocketInstance).rejects.toThrow('Error!');
   });
 });
