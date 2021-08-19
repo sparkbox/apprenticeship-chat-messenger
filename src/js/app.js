@@ -1,8 +1,10 @@
 import '../css/index.css';
-import { addMessageToChatHistory } from './chatWindow';
+import { setCustomWebSocketInstance } from './chatService';
 import { onEnterPress, onFormSubmit } from './eventHandlers';
+import sendMessage from './sendMessage';
 
-export default function main() {
-  onEnterPress(addMessageToChatHistory);
-  onFormSubmit(addMessageToChatHistory);
+export default async function main() {
+  onEnterPress(sendMessage);
+  onFormSubmit(sendMessage);
+  await setCustomWebSocketInstance(new WebSocket('ws://localhost:3000'));
 }
