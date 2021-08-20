@@ -1,17 +1,6 @@
 import { dispatchOutgoingMessage, setCustomWebSocketInstance } from './chatService';
 
-describe('chatService.js', () => {
-  it('Runs send method when dispatchOutgoingMethod is called', () => {
-    const mockWebSocket = {
-      send: jest.fn(),
-    };
-
-    setCustomWebSocketInstance(mockWebSocket);
-
-    dispatchOutgoingMessage('Test');
-
-    expect(mockWebSocket.send).toHaveBeenCalled();
-  });
+describe('setCustomWebSocketInstance', () => {
   it('Resolves with instance', () => {
     const mockWebSocket = {
       onopen: () => {},
@@ -23,6 +12,7 @@ describe('chatService.js', () => {
 
     expect(customWebsocketInstance).resolves.toMatchObject(mockWebSocket);
   });
+
   it('Rejects with error message', () => {
     const mockWebSocket = {
       onopen: () => {},
@@ -32,5 +22,33 @@ describe('chatService.js', () => {
     const customWebsocketInstance = setCustomWebSocketInstance(mockWebSocket);
     mockWebSocket.onerror(new Error('Error!'));
     expect(customWebsocketInstance).rejects.toThrow('Error!');
+  });
+
+  it('executes onmessage correctly', () => {
+    const mockWebSocket = {
+      onopen: () => {},
+      onerror: () => {},
+    };
+
+    const onMessage = jest.fn();
+
+    setCustomWebSocketInstance(mockWebSocket, onMessage);
+    expect(onMessage).not.toHaveBeenCalled();
+    mockWebSocket.onmessage({ data: 'data' });
+    expect(onMessage).toHaveBeenCalled();
+  });
+});
+
+describe('dispatchOutgoingMessage', () => {
+  it('Runs send method when dispatchOutgoingMethod is called', () => {
+    const mockWebSocket = {
+      send: jest.fn(),
+    };
+
+    setCustomWebSocketInstance(mockWebSocket);
+
+    dispatchOutgoingMessage('Test');
+
+    expect(mockWebSocket.send).toHaveBeenCalled();
   });
 });
